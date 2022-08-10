@@ -8,20 +8,15 @@ on:
   pull_request:
     branches: [ "main" ]
 
+env:
+        BROWSERSTACK_ACCESS_KEY: "${{ secrets.BROWSERSTACK_ACCESS_KEY }}"
+        BROWSERSTACK_USERNAME: "${{ secrets.BROWSERSTACKUSERNAME }}"
 jobs:
-  ubuntu-job:
-    name: 'BrowserStack Test'
-    runs-on: windows-latest  # Can be self-hosted runner also
+  test:
+    name: Run CloudTest
+    runs-on: windows-latest
     steps:
-      - name: 'BrowserStack Env Setup'  # Invokes the setup-env action
-        uses: browserstack/github-actions/setup-env@master
-        with:
-          username:  ${{ secrets.BROWSERSTACKUSERNAME }}
-          access-key: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
-      - name: 'Checkout the repository'
-        uses: actions/checkout@v2 
-        uses: joonvena/robotframework-docker-action@v0.1
-        uses: sudo pip install robotframework 
-        
-      - name: 'Running test on BrowserStack'  # Invokes the actual test script that would run on BrowserStack browsers
+      - name: Check out the repository
+        uses: actions/checkout@v1
+      - name: Rub Robot Tests
         run: robot ./Tests/loginpageTest.robot
