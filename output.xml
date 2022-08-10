@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.10.5 on win32)" generated="20220810 14:13:13.892" rpa="false" schemaversion="3">
+<suite id="s1" name="loginpageTest" source="C:\Users\jshahavi\Desktop\Git\CloudTest\Tests\loginpageTest.robot">
+<kw name="Zephyr test cycle" library="commonutility" type="SETUP">
+<kw name="Create Cycle" library="Zephyrcycle">
+<var>${cycle}</var>
+<msg timestamp="20220810 14:13:15.527" level="INFO">CLOUDV-R102 created
+The testcycle ID is when zephyr cycle created :CLOUDV-R102</msg>
+<msg timestamp="20220810 14:13:15.527" level="INFO">${cycle} = CLOUDV-R102</msg>
+<status status="PASS" starttime="20220810 14:13:14.607" endtime="20220810 14:13:15.527"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${testcycle}</arg>
+<arg>${cycle}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20220810 14:13:15.528" level="INFO">${testcycle} = CLOUDV-R102</msg>
+<status status="PASS" starttime="20220810 14:13:15.527" endtime="20220810 14:13:15.528"/>
+</kw>
+<status status="PASS" starttime="20220810 14:13:14.607" endtime="20220810 14:13:15.528"/>
+</kw>
+<test id="s1-t1" name="CLOUDV-T2384: Verify Cloudvue Manager Valid Login" line="24">
+<kw name="Open Web Browser" library="commonutility">
+<arg>${cloudvuemanagerURL}</arg>
+<arg>${browser}</arg>
+<doc>The objective of this method is to open browser on the browserstack or local based on the request</doc>
+<if>
+<branch type="IF" condition="&quot;${platform}&quot; == &quot;bstack&quot;">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${cloudvuemanagerURL}</arg>
+<arg>${browser}</arg>
+<arg>remote_url=${REMOTE_URL}</arg>
+<arg>desired_capabilities=browser:${browser},browser_version:${BROWSER_VERSION},os:${os},os_version:${OS_VERSION}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220810 14:13:15.532" level="INFO">Opening browser 'chrome' to base url 'https://dev-dashboard.cloudvue.com/login' through remote server at 'http://dharmendra_iZxJCD:WL1C9s3WYAfRJb9wTzpz@hub-cloud.browserstack.com/wd/hub'.</msg>
+<status status="PASS" starttime="20220810 14:13:15.532" endtime="20220810 14:13:22.395"/>
+</kw>
+<kw name="Get Session Id" library="SeleniumLibrary">
+<var>${browserid2}</var>
+<doc>Returns the currently active browser session id.</doc>
+<msg timestamp="20220810 14:13:22.395" level="INFO">${browserid2} = c26f1e3391933e3d9ac771c37f32215ab14e2b6b</msg>
+<status status="PASS" starttime="20220810 14:13:22.395" endtime="20220810 14:13:22.395"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${browserid}</arg>
+<arg>${browserid2}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20220810 14:13:22.396" level="INFO">${browserid} = c26f1e3391933e3d9ac771c37f32215ab14e2b6b</msg>
+<status status="PASS" starttime="20220810 14:13:22.395" endtime="20220810 14:13:22.396"/>
+</kw>
+<status status="PASS" starttime="20220810 14:13:15.532" endtime="20220810 14:13:22.396"/>
+</branch>
+<branch type="ELSE IF" condition="&quot;${platform}&quot; == &quot;local&quot;">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${cloudvuemanagerURL}</arg>
+<arg>${browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="NOT RUN" starttime="20220810 14:13:22.396" endtime="20220810 14:13:22.396"/>
+</kw>
+<status status="NOT RUN" starttime="20220810 14:13:22.396" endtime="20220810 14:13:22.396"/>
+</branch>
+<status status="PASS" starttime="20220810 14:13:15.531" endtime="20220810 14:13:22.396"/>
+</if>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220810 14:13:22.396" endtime="20220810 14:13:22.713"/>
+</kw>
+<status status="PASS" starttime="20220810 14:13:15.530" endtime="20220810 14:13:22.713"/>
+</kw>
+<kw name="Input User Name" library="loginpage">
+<arg>${staffusername}</arg>
+<doc>The objective of this method is to write the staff email ID</doc>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${staffusernameid}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220810 14:13:22.715" level="INFO">Clicking element 'id:loginEmail'.</msg>
+<status status="PASS" starttime="20220810 14:13:22.715" endtime="20220810 14:13:23.183"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${staffusernameid}</arg>
+<arg>${staffusername}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220810 14:13:23.183" level="INFO">Typing text 'shahavp71@gmail.com' into text field 'id:loginEmail'.</msg>
+<status status="PASS" starttime="20220810 14:13:23.183" endtime="20220810 14:13:23.932"/>
+</kw>
+<status status="PASS" starttime="20220810 14:13:22.714" endtime="20220810 14:13:23.932"/>
+</kw>
+<kw name="Input password" library="loginpage">
+<arg>${staffpassword}</arg>
+<doc>The objective of this method is to write the staff Login password</doc>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${staffpasswordid}</arg>
+<arg>${staffpassword}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220810 14:13:23.937" level="INFO">Typing text 'Jci@12345' into text field 'id:loginPassword'.</msg>
+<status status="PASS" starttime="20220810 14:13:23.936" endtime="20220810 14:13:24.649"/>
+</kw>
+<status status="PASS" starttime="20220810 14:13:23.935" endtime="20220810 14:13:24.649"/>
+</kw>
+<kw name="Click on Login Button" library="loginpage">
+<doc>The objective of this method is to click on the login Button</doc>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${loginbtn}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20220810 14:13:24.651" level="INFO">Clicking button 'xpath://button[@type="submit"]'.</msg>
+<status status="PASS" starttime="20220810 14:13:24.650" endtime="20220810 14:13:26.076"/>
+</kw>
+<status status="PASS" starttime="20220810 14:13:24.650" endtime="20220810 14:13:26.076"/>
+</kw>
+<kw name="Verify Legacy Notice is present" library="commonutility">
+<doc>The objective of this test case is to close legacy notification if it is preset on the screen</doc>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${legacynotice}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20220810 14:13:26.078" endtime="20220810 14:13:28.314"/>
+</kw>
+<kw name="Get Element Count" library="SeleniumLibrary">
+<var>${countLegacyNoticeElement}</var>
+<arg>${legacynotice}</arg>
+<doc>Returns the number of elements matching ``locator``.</doc>
+<msg timestamp="20220810 14:13:28.852" level="INFO">${countLegacyNoticeElement} = 1</msg>
+<status status="PASS" starttime="20220810 14:13:28.314" endtime="20220810 14:13:28.852"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${countLegacyNoticeElement}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220810 14:13:28.853" endtime="20220810 14:13:28.853"/>
+</kw>
+<if>
+<branch type="IF" condition="${countLegacyNoticeElement} &gt; 0">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${LegacyNoticeOkayBtn}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220810 14:13:28.854" level="INFO">Clicking element 'xpath://span[normalize-space()="Ok"]'.</msg>
+<status status="PASS" starttime="20220810 14:13:28.854" endtime="20220810 14:13:29.257"/>
+</kw>
+<status status="PASS" starttime="20220810 14:13:28.854" endtime="20220810 14:13:29.257"/>
+</branch>
+<status status="PASS" starttime="20220810 14:13:28.853" endtime="20220810 14:13:29.257"/>
+</if>
+<status status="PASS" starttime="20220810 14:13:26.077" endtime="20220810 14:13:29.257"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>3</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220810 14:13:32.273" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20220810 14:13:29.258" endtime="20220810 14:13:32.273"/>
+</kw>
+<kw name="Logout from cloudvuemanager" library="dashboardpage">
+<doc>Logging out from cloudvuemanager</doc>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${logoutdots}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220810 14:13:32.276" level="INFO">Clicking element 'xpath://body//div[@id="root"]//div[@class="content"]//div//div//div//div[3]//button[1]//div[1]//*[local-name()="svg"]'.</msg>
+<status status="PASS" starttime="20220810 14:13:32.276" endtime="20220810 14:13:32.803"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${logoutbtn}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220810 14:13:32.803" level="INFO">Clicking element 'xpath://div[contains(text(),"Log out")]'.</msg>
+<status status="PASS" starttime="20220810 14:13:32.803" endtime="20220810 14:13:33.126"/>
+</kw>
+<status status="PASS" starttime="20220810 14:13:32.276" endtime="20220810 14:13:33.127"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${testcycle}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220810 14:13:33.127" endtime="20220810 14:13:33.128"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220810 14:13:33.129" endtime="20220810 14:13:33.800"/>
+</kw>
+<kw name="Zephyr Result" library="Zephyrscale" type="TEARDOWN">
+<msg timestamp="20220810 14:13:34.330" level="INFO">CLOUDV-R102</msg>
+<msg timestamp="20220810 14:13:35.327" level="INFO">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+c26f1e3391933e3d9ac771c37f32215ab14e2b6b
+https://automate.browserstack.com/builds/fd041b2a966954c1103b6d9d94a083ded4382fa1/sessions/c26f1e3391933e3d9ac771c37f32215ab14e2b6b?auth_token=f8f7b723897b6c481f7394a27947e615cfd3f88cad819c0a616360b5cc7ff55c</msg>
+<status status="PASS" starttime="20220810 14:13:33.801" endtime="20220810 14:13:35.327"/>
+</kw>
+<status status="PASS" starttime="20220810 14:13:15.528" endtime="20220810 14:13:35.328"/>
+</test>
+<test id="s1-t2" name="CLOUDV-T2385: Verify forgot password functionality" line="35">
+<kw name="Open Web Browser" library="commonutility">
+<arg>${cloudvuemanagerURL}</arg>
+<arg>${browser}</arg>
+<doc>The objective of this method is to open browser on the browserstack or local based on the request</doc>
+<if>
+<branch type="IF" condition="&quot;${platform}&quot; == &quot;bstack&quot;">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${cloudvuemanagerURL}</arg>
+<arg>${browser}</arg>
+<arg>remote_url=${REMOTE_URL}</arg>
+<arg>desired_capabilities=browser:${browser},browser_version:${BROWSER_VERSION},os:${os},os_version:${OS_VERSION}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220810 14:13:35.333" level="INFO">Opening browser 'chrome' to base url 'https://dev-dashboard.cloudvue.com/login' through remote server at 'http://dharmendra_iZxJCD:WL1C9s3WYAfRJb9wTzpz@hub-cloud.browserstack.com/wd/hub'.</msg>
+<status status="PASS" starttime="20220810 14:13:35.332" endtime="20220810 14:13:47.554"/>
+</kw>
+<kw name="Get Session Id" library="SeleniumLibrary">
+<var>${browserid2}</var>
+<doc>Returns the currently active browser session id.</doc>
+<msg timestamp="20220810 14:13:47.555" level="INFO">${browserid2} = 9fa50b2beb6cf27b1762102fdfd52c815db26340</msg>
+<status status="PASS" starttime="20220810 14:13:47.554" endtime="20220810 14:13:47.555"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${browserid}</arg>
+<arg>${browserid2}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20220810 14:13:47.555" level="INFO">${browserid} = 9fa50b2beb6cf27b1762102fdfd52c815db26340</msg>
+<status status="PASS" starttime="20220810 14:13:47.555" endtime="20220810 14:13:47.555"/>
+</kw>
+<status status="PASS" starttime="20220810 14:13:35.332" endtime="20220810 14:13:47.555"/>
+</branch>
+<branch type="ELSE IF" condition="&quot;${platform}&quot; == &quot;local&quot;">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${cloudvuemanagerURL}</arg>
+<arg>${browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="NOT RUN" starttime="20220810 14:13:47.556" endtime="20220810 14:13:47.556"/>
+</kw>
+<status status="NOT RUN" starttime="20220810 14:13:47.555" endtime="20220810 14:13:47.556"/>
+</branch>
+<status status="PASS" starttime="20220810 14:13:35.332" endtime="20220810 14:13:47.556"/>
+</if>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220810 14:13:47.556" endtime="20220810 14:13:48.051"/>
+</kw>
+<status status="PASS" starttime="20220810 14:13:35.331" endtime="20220810 14:13:48.051"/>
+</kw>
+<kw name="Click on Forgot password" library="loginpage">
+<doc>The objective of this method is to ro click on the forgot password link</doc>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${forgotpasswordlink}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220810 14:13:48.056" level="INFO">Clicking element 'xpath://span[text() = "Forgot Password?"]'.</msg>
+<status status="PASS" starttime="20220810 14:13:48.055" endtime="20220810 14:13:48.305"/>
+</kw>
+<status status="PASS" starttime="20220810 14:13:48.053" endtime="20220810 14:13:48.305"/>
+</kw>
+<kw name="Verify the Forgot Password page UI" library="loginpage">
+<doc>The objective of this method is to verify forgot password UI</doc>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>xpath://span[text() = "Reset Password"]</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20220810 14:13:48.584" level="INFO">Current page contains element 'xpath://span[text() = "Reset Password"]'.</msg>
+<status status="PASS" starttime="20220810 14:13:48.307" endtime="20220810 14:13:48.584"/>
+</kw>
+<kw name="Title Should Be" library="SeleniumLibrary">
+<arg>Cloudvue Manager</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20220810 14:13:48.805" level="INFO">Page title is 'Cloudvue Manager'.</msg>
+<status status="PASS" starttime="20220810 14:13:48.585" endtime="20220810 14:13:48.805"/>
+</kw>
+<kw name="Location Should Contain" library="SeleniumLibrary">
+<arg>resetpassword</arg>
+<doc>Verifies that the current URL contains ``expected``.</doc>
+<msg timestamp="20220810 14:13:49.229" level="INFO">Current location contains 'resetpassword'.</msg>
+<status status="PASS" starttime="20220810 14:13:48.805" endtime="20220810 14:13:49.229"/>
+</kw>
+<status status="PASS" starttime="20220810 14:13:48.306" endtime="20220810 14:13:49.230"/>
+</kw>
+<kw name="Verify valid password Reset" library="loginpage">
+<arg>${passwordresetemail}</arg>
+<doc>The objective of this method is to verify valid password reset functionality</doc>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${passwordresetemailID}</arg>
+<arg>${passwordresetemail}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220810 14:13:49.231" level="INFO">Typing text 'vshahaqa@gmail.com' into text field 'id:ResetPasswordEmail'.</msg>
+<status status="PASS" starttime="20220810 14:13:49.231" endtime="20220810 14:13:50.157"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${forgotpasswordsubmitbtn}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220810 14:13:50.158" level="INFO">Clicking element 'xpath://span[normalize-space()="Submit"]'.</msg>
+<status status="PASS" starttime="20220810 14:13:50.157" endtime="20220810 14:13:50.548"/>
+</kw>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>//span[normalize-space()='Please check your email for a password reset link']</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20220810 14:13:50.658" level="INFO">Current page contains element '//span[normalize-space()='Please check your email for a password reset link']'.</msg>
+<status status="PASS" starttime="20220810 14:13:50.548" endtime="20220810 14:13:50.659"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>//span[normalize-space()=""]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220810 14:13:50.660" level="INFO">Clicking element '//span[normalize-space()=""]'.</msg>
+<msg timestamp="20220810 14:13:51.317" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-1.png"&gt;&lt;img src="selenium-screenshot-1.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20220810 14:13:51.318" level="FAIL">Element with locator '//span[normalize-space()=""]' not found.</msg>
+<status status="FAIL" starttime="20220810 14:13:50.659" endtime="20220810 14:13:51.363"/>
+</kw>
+<kw name="Location Should Contain" library="SeleniumLibrary">
+<arg>login</arg>
+<doc>Verifies that the current URL contains ``expected``.</doc>
+<status status="NOT RUN" starttime="20220810 14:13:51.364" endtime="20220810 14:13:51.364"/>
+</kw>
+<status status="FAIL" starttime="20220810 14:13:49.230" endtime="20220810 14:13:51.364"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="NOT RUN" starttime="20220810 14:13:51.365" endtime="20220810 14:13:51.365"/>
+</kw>
+<kw name="Zephyr Result" library="Zephyrscale" type="TEARDOWN">
+<msg timestamp="20220810 14:13:51.687" level="INFO">CLOUDV-R102</msg>
+<msg timestamp="20220810 14:13:52.313" level="INFO">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+9fa50b2beb6cf27b1762102fdfd52c815db26340
+https://automate.browserstack.com/builds/fd041b2a966954c1103b6d9d94a083ded4382fa1/sessions/9fa50b2beb6cf27b1762102fdfd52c815db26340?auth_token=002c690ad26a51bcaaf98f4f08fc368efe07c1feca9fe15eb521cf2d51db1a5c</msg>
+<status status="PASS" starttime="20220810 14:13:51.366" endtime="20220810 14:13:52.313"/>
+</kw>
+<status status="FAIL" starttime="20220810 14:13:35.330" endtime="20220810 14:13:52.313">Element with locator '//span[normalize-space()=""]' not found.</status>
+</test>
+<test id="s1-t3" name="CLOUDV-T2386: Verify register page" line="42">
+<kw name="Open Web Browser" library="commonutility">
+<arg>${cloudvuemanagerURL}</arg>
+<arg>${browser}</arg>
+<doc>The objective of this method is to open browser on the browserstack or local based on the request</doc>
+<if>
+<branch type="IF" condition="&quot;${platform}&quot; == &quot;bstack&quot;">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${cloudvuemanagerURL}</arg>
+<arg>${browser}</arg>
+<arg>remote_url=${REMOTE_URL}</arg>
+<arg>desired_capabilities=browser:${browser},browser_version:${BROWSER_VERSION},os:${os},os_version:${OS_VERSION}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220810 14:13:52.320" level="INFO">Opening browser 'chrome' to base url 'https://dev-dashboard.cloudvue.com/login' through remote server at 'http://dharmendra_iZxJCD:WL1C9s3WYAfRJb9wTzpz@hub-cloud.browserstack.com/wd/hub'.</msg>
+<status status="PASS" starttime="20220810 14:13:52.319" endtime="20220810 14:14:01.199"/>
+</kw>
+<kw name="Get Session Id" library="SeleniumLibrary">
+<var>${browserid2}</var>
+<doc>Returns the currently active browser session id.</doc>
+<msg timestamp="20220810 14:14:01.199" level="INFO">${browserid2} = 653bcc4ad8bbe66d9e84b7def002b83513940db0</msg>
+<status status="PASS" starttime="20220810 14:14:01.199" endtime="20220810 14:14:01.199"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${browserid}</arg>
+<arg>${browserid2}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20220810 14:14:01.201" level="INFO">${browserid} = 653bcc4ad8bbe66d9e84b7def002b83513940db0</msg>
+<status status="PASS" starttime="20220810 14:14:01.201" endtime="20220810 14:14:01.201"/>
+</kw>
+<status status="PASS" starttime="20220810 14:13:52.318" endtime="20220810 14:14:01.201"/>
+</branch>
+<branch type="ELSE IF" condition="&quot;${platform}&quot; == &quot;local&quot;">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${cloudvuemanagerURL}</arg>
+<arg>${browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="NOT RUN" starttime="20220810 14:14:01.201" endtime="20220810 14:14:01.201"/>
+</kw>
+<status status="NOT RUN" starttime="20220810 14:14:01.201" endtime="20220810 14:14:01.201"/>
+</branch>
+<status status="PASS" starttime="20220810 14:13:52.318" endtime="20220810 14:14:01.201"/>
+</if>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220810 14:14:01.201" endtime="20220810 14:14:01.435"/>
+</kw>
+<status status="PASS" starttime="20220810 14:13:52.317" endtime="20220810 14:14:01.437"/>
+</kw>
+<kw name="Click on Register link" library="loginpage">
+<doc>The objective of this method is to click on the Register functionality</doc>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${Registerlink}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220810 14:14:01.438" level="INFO">Clicking element 'xpath://span[text()="Register"]'.</msg>
+<status status="PASS" starttime="20220810 14:14:01.438" endtime="20220810 14:14:01.694"/>
+</kw>
+<status status="PASS" starttime="20220810 14:14:01.437" endtime="20220810 14:14:01.694"/>
+</kw>
+<kw name="Verify the register page UI" library="loginpage">
+<doc>The objective of the method is to verify UI of the Register page</doc>
+<kw name="Page Should Contain Element" library="SeleniumLibrary">
+<arg>xpath://span[normalize-space()="Register a Staff"]</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20220810 14:14:01.825" level="INFO">Current page contains element 'xpath://span[normalize-space()="Register a Staff"]'.</msg>
+<status status="PASS" starttime="20220810 14:14:01.696" endtime="20220810 14:14:01.825"/>
+</kw>
+<kw name="Title Should Be" library="SeleniumLibrary">
+<arg>Cloudvue Manager</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<msg timestamp="20220810 14:14:01.915" level="INFO">Page title is 'Cloudvue Manager'.</msg>
+<status status="PASS" starttime="20220810 14:14:01.825" endtime="20220810 14:14:01.915"/>
+</kw>
+<kw name="Location Should Contain" library="SeleniumLibrary">
+<arg>register</arg>
+<doc>Verifies that the current URL contains ``expected``.</doc>
+<msg timestamp="20220810 14:14:02.036" level="INFO">Current location contains 'register'.</msg>
+<status status="PASS" starttime="20220810 14:14:01.915" endtime="20220810 14:14:02.037"/>
+</kw>
+<status status="PASS" starttime="20220810 14:14:01.695" endtime="20220810 14:14:02.037"/>
+</kw>
+<kw name="Verify register page input text boxes" library="loginpage">
+<doc>The objective of the method is to make sure that all register page input elements is working and allow user to enter data</doc>
+<kw name="Generate Random String" library="String">
+<var>${Regiserpassword}</var>
+<arg>10</arg>
+<arg>[LOWER]</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<msg timestamp="20220810 14:14:02.039" level="INFO">${Regiserpassword} = luuumtwnok</msg>
+<status status="PASS" starttime="20220810 14:14:02.038" endtime="20220810 14:14:02.039"/>
+</kw>
+<kw name="Generate Random String" library="String">
+<var>${Regiserfirstname}</var>
+<arg>8</arg>
+<arg>[LOWER]</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<msg timestamp="20220810 14:14:02.039" level="INFO">${Regiserfirstname} = vuojjfgf</msg>
+<status status="PASS" starttime="20220810 14:14:02.039" endtime="20220810 14:14:02.039"/>
+</kw>
+<kw name="Generate Random String" library="String">
+<var>${Regiserlastname}</var>
+<arg>8</arg>
+<arg>[LOWER]</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<msg timestamp="20220810 14:14:02.040" level="INFO">${Regiserlastname} = gsximsvd</msg>
+<status status="PASS" starttime="20220810 14:14:02.040" endtime="20220810 14:14:02.041"/>
+</kw>
+<kw name="Generate Random String" library="String">
+<var>${Regiserpartner}</var>
+<arg>5</arg>
+<arg>[UPPER]</arg>
+<doc>Generates a string with a desired ``length`` from the given ``chars``.</doc>
+<msg timestamp="20220810 14:14:02.041" level="INFO">${Regiserpartner} = SWXIS</msg>
+<status status="PASS" starttime="20220810 14:14:02.041" endtime="20220810 14:14:02.041"/>
+</kw>
+<kw name="Catenate" library="BuiltIn">
+<var>${Regiseremail}</var>
+<arg>SEPARATOR=</arg>
+<arg>${Regiserfirstname}</arg>
+<arg>@endtest-mail.io</arg>
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<msg timestamp="20220810 14:14:02.042" level="INFO">${Regiseremail} = vuojjfgf@endtest-mail.io</msg>
+<status status="PASS" starttime="20220810 14:14:02.042" endtime="20220810 14:14:02.042"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${RegisteremailID}</arg>
+<arg>${Regiseremail}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220810 14:14:02.043" level="INFO">Typing text 'vuojjfgf@endtest-mail.io' into text field 'id:RegisterEmail'.</msg>
+<status status="PASS" starttime="20220810 14:14:02.042" endtime="20220810 14:14:02.782"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${RegisterpasswordID}</arg>
+<arg>${Regiserpassword}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220810 14:14:02.783" level="INFO">Typing text 'luuumtwnok' into text field 'id:RegisterPassword'.</msg>
+<status status="PASS" starttime="20220810 14:14:02.782" endtime="20220810 14:14:03.311"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${RegiserconfimationpasswordID}</arg>
+<arg>${Regiserpassword}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220810 14:14:03.311" level="INFO">Typing text 'luuumtwnok' into text field 'id:RegisterConfirmPassword'.</msg>
+<status status="PASS" starttime="20220810 14:14:03.311" endtime="20220810 14:14:03.749"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${RegisterfirstNameID}</arg>
+<arg>${Regiserfirstname}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220810 14:14:03.749" level="INFO">Typing text 'vuojjfgf' into text field 'id:RegisterFirstName'.</msg>
+<status status="PASS" starttime="20220810 14:14:03.749" endtime="20220810 14:14:04.203"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${RegisterlastNameID}</arg>
+<arg>${Regiserlastname}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220810 14:14:04.204" level="INFO">Typing text 'gsximsvd' into text field 'id:RegisterLastName'.</msg>
+<status status="PASS" starttime="20220810 14:14:04.203" endtime="20220810 14:14:04.627"/>
+</kw>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${RegisterpartnernameID}</arg>
+<arg>${Regiserpartner}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220810 14:14:04.628" level="INFO">Typing text 'SWXIS' into text field 'id:RegisterPartnerName'.</msg>
+<status status="PASS" starttime="20220810 14:14:04.627" endtime="20220810 14:14:05.014"/>
+</kw>
+<status status="PASS" starttime="20220810 14:14:02.038" endtime="20220810 14:14:05.014"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220810 14:14:07.029" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20220810 14:14:05.015" endtime="20220810 14:14:07.030"/>
+</kw>
+<kw name="Click on the register page cancel button" library="loginpage">
+<doc>The objective of the method is to click on the cancel button</doc>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath://span[normalize-space()="Cancel"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220810 14:14:07.032" level="INFO">Clicking element 'xpath://span[normalize-space()="Cancel"]'.</msg>
+<status status="PASS" starttime="20220810 14:14:07.032" endtime="20220810 14:14:07.451"/>
+</kw>
+<status status="PASS" starttime="20220810 14:14:07.031" endtime="20220810 14:14:07.451"/>
+</kw>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220810 14:14:07.452" endtime="20220810 14:14:08.337"/>
+</kw>
+<kw name="Zephyr Result" library="Zephyrscale" type="TEARDOWN">
+<msg timestamp="20220810 14:14:08.643" level="INFO">CLOUDV-R102</msg>
+<msg timestamp="20220810 14:14:09.306" level="INFO">XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+653bcc4ad8bbe66d9e84b7def002b83513940db0
+https://automate.browserstack.com/builds/fd041b2a966954c1103b6d9d94a083ded4382fa1/sessions/653bcc4ad8bbe66d9e84b7def002b83513940db0?auth_token=e04ca4b275e0cbb147bfb64e712b208edc9a266fc90976bfc94b869f5a1252d3</msg>
+<status status="PASS" starttime="20220810 14:14:08.338" endtime="20220810 14:14:09.306"/>
+</kw>
+<status status="PASS" starttime="20220810 14:13:52.315" endtime="20220810 14:14:09.307"/>
+</test>
+<status status="FAIL" starttime="20220810 14:13:13.899" endtime="20220810 14:14:09.309"/>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="2" fail="1" skip="0" id="s1" name="loginpageTest">loginpageTest</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
