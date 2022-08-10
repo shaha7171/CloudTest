@@ -20,6 +20,7 @@ jobs:
           access-key: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
       - name: 'Checkout the repository'
         uses: actions/checkout@v2 
+        uses: joonvena/robotframework-docker-action@v0.1
         
       - name: 'Running test on BrowserStack'  # Invokes the actual test script that would run on BrowserStack browsers
         run: robot ./Tests/loginpageTest.robot
