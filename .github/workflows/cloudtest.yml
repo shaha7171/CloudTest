@@ -21,7 +21,6 @@ jobs:
       - name: 'Checkout the repository'
         uses: actions/checkout@v2 
         uses: joonvena/robotframework-docker-action@v0.1
-        uses: sudo pip install robotframework
         uses: pip install selenium
         uses: pip install robotframework
         uses: pip install robotframework-seleniumlibrary 
