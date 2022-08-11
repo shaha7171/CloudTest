@@ -8,16 +8,28 @@ on:
   pull_request:
     branches: [ "main" ]
 
-env:
-        BROWSERSTACK_ACCESS_KEY: "${{ secrets.BROWSERSTACK_ACCESS_KEY }}"
-        BROWSERSTACK_USERNAME: "${{ secrets.BROWSERSTACKUSERNAME }}"
 jobs:
-  Run-npm-on-Ubuntu:
-    name: Run npm on Ubuntu
-    runs-on: ubuntu-latest
+  ubuntu-job:
+    name: 'BrowserStack Test'
+    runs-on: ubuntu-latest  # Can be self-hosted runner also
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: 'BrowserStack Env Setup'  # Invokes the setup-env action
+        uses: browserstack/github-actions/setup-env@master
         with:
-          node-version: '14'
-      - run: npm help
+          username:  ${{ secrets.BROWSERSTACKUSERNAME }}
+          access-key: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+      - name: 'Checkout the repository'
+        uses: actions/checkout@v2 
+        uses: joonvena/robotframework-docker-action@v0.1
+        uses: sudo pip install robotframework
+        uses: pip install selenium
+        uses: pip install robotframework
+        uses: pip install robotframework-seleniumlibrary 
+        uses: pip install selenium robotframework-selenium2library webdrivermanager
+        uses: pip install robotframework-pabot
+        uses: pip install robotframework-selenium2library
+        uses: pip install webdriver-manager 
+ 
+        
+      - name: 'Running test on BrowserStack'  # Invokes the actual test script that would run on BrowserStack browsers
+        run: robot ./Tests/loginpageTest.robot
