@@ -7,6 +7,8 @@ import json
 from browstackvideo import browserstackvideo
 from robot.libraries.BuiltIn import BuiltIn
 from robot.api import logger
+import urllib.request
+
 
 # REQUEST HEADER: to authenticate and authorize api
 authtype = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzNGYzNWI4NS0xZjRmLTNhYzktODU4NC0yNDY3OWMxZDkwNDMiLCJjb250ZXh0Ijp7ImJhc2VVcmwiOiJodHRwczpcL1wvamNpcHJvZHVjdHMuYXRsYXNzaWFuLm5ldCIsInVzZXIiOnsiYWNjb3VudElkIjoiNjI2MDYxMzlmZDA2MjcwMDY5YzA4ZTRjIn19LCJpc3MiOiJjb20ua2Fub2FoLnRlc3QtbWFuYWdlciIsImV4cCI6MTY4NDk0NjA1OSwiaWF0IjoxNjUzNDEwMDU5fQ.F8E7oRYFLx9YWt9CbOklpOyCs7CBqhsGIgglCmhectU'
@@ -27,12 +29,12 @@ def zephyr_result():
             driver = BuiltIn().get_variables()['${browserid}']  
             print ('XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX')
             print (driver)
+            
             browserstack_URL = f"https://api-cloud.browserstack.com/automate/sessions/{driver}"
-            b_response = requests.get(browserstack_URL, auth=('dharmendra_iZxJCD', 'WL1C9s3WYAfRJb9wTzpz')).json()
+            b_response = requests.get(browserstack_URL, auth=('jitendra_x2E8IF', 'pTBJPjz8AAw3qLL1Ts27')).json()
             b_videolink = b_response['automation_session']['public_url']
             print (b_videolink)
-            #print ('printing the driver ID')
-            #print (driver)
+           
 
             env = BuiltIn().get_variables()['${browser}']
             result = BuiltIn().get_variables()['${TESTSTATUS}']
@@ -53,6 +55,7 @@ def zephyr_result():
                  'environmentName': env,
                  'executedById': '62606139fd06270069c08e4c',
                  'assignedToId': '62606139fd06270069c08e4c',
+                 #'comment': 'Automated by robot framework',
                  'comment': f'Browserstack Link: <br> {b_videolink}',
                  'statusName': 'Pass',
                  'customFields': {'Execution Notes': 'All Steps Passed! '}
@@ -66,6 +69,7 @@ def zephyr_result():
                  'environmentName': env,
                  'executedById': '62606139fd06270069c08e4c',
                  'assignedToId': '62606139fd06270069c08e4c',
+                 #'comment': 'Automated by robot framework',
                  'comment': f'Browserstack Link: <br> {b_videolink}',
                  'statusName': 'Fail',
                  'customFields': {'Execution Notes': fail_msg }

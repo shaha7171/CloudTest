@@ -20,24 +20,6 @@ jobs:
           access-key: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
       - name: 'Checkout the repository'
         uses: actions/checkout@v2
-      - name: Test1 
-        uses: joonvena/robotframework-docker-action@v0.1
-      - name: Test2
-        uses: pip install selenium
-      - name: Test3
-        uses: pip install robotframework
-      - name: Test4
-        uses: pip install robotframework-seleniumlibrary 
-      - name: Test5
-        uses: pip install selenium robotframework-selenium2library webdrivermanager
-      - name: Test6
-        uses: pip install robotframework-pabot
-      - name: Test7
-        uses: pip install robotframework-selenium2library
-      - name: Test1
-        uses: pip install webdriver-manager
-       
- 
+     
         
-      - name: 'Running test on BrowserStack'  # Invokes the actual test script that would run on BrowserStack browsers
-        run: robot ./Tests/loginpageTest.robot
+

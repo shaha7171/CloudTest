@@ -73,7 +73,7 @@ Verify valid password Reset
     Input Text    ${passwordresetemailID}    ${passwordresetemail}
     Click Element    ${forgotpasswordsubmitbtn}
     Page Should Contain Element    //span[normalize-space()='Please check your email for a password reset link']
-    Click Element    //span[normalize-space()=""]
+    Click Element    //span[normalize-space()="Ok"]
     Location Should Contain    login
 
 
