@@ -12,11 +12,12 @@ env:
         BROWSERSTACK_ACCESS_KEY: "${{ secrets.BROWSERSTACK_ACCESS_KEY }}"
         BROWSERSTACK_USERNAME: "${{ secrets.BROWSERSTACKUSERNAME }}"
 jobs:
-  test:
-    name: Run CloudTest
-    runs-on: windows-latest
+  Run-npm-on-Ubuntu:
+    name: Run npm on Ubuntu
+    runs-on: ubuntu-latest
     steps:
-      - name: Check out the repository
-        uses: actions/checkout@v1
-      - name: Rub Robot Tests
-        run: robot ./Tests/loginpageTest.robot
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+      - run: npm help
