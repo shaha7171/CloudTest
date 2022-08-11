@@ -15,7 +15,7 @@ ${REMOTE_URL}    http://${USERNAME}:${ACCESS_KEY}@hub-cloud.browserstack.com/wd/
 ${os}    Windows
 ${browser_version}    latest-1
 ${OS_VERSION}    10
-
+${seleniumVersion}    4.3.0
 *** Keywords ***
 Zephyr test cycle
     ${cycle}=    Create Cycle
